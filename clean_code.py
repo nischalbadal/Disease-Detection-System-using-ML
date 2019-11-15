@@ -1,4 +1,5 @@
 from tkinter import *
+
 import numpy as np
 import pandas as pd
 # from gui_stuff import *
@@ -93,7 +94,7 @@ def DecisionTree():
     psymptoms = [Symptom1.get(),Symptom2.get(),Symptom3.get(),Symptom4.get(),Symptom5.get()]
 
     for k in range(0,len(l1)):
-        # print (k,)
+        print (k)
         for z in psymptoms:
             if(z==l1[k]):
                 l2[k]=1
@@ -191,7 +192,7 @@ def NaiveBayes():
 
 # gui_stuff------------------------------------------------------------------------------------
 
-root = Tk()
+root = Tk("DISEASE PREDICTION ")
 root.configure(background='white')
 
 # entry variables
@@ -237,7 +238,7 @@ S5Lb.grid(row=11, column=0, pady=2, sticky=W)
 
 
 lrLb = Label(root, text="DecisionTree", fg="white", bg="red")
-lrLb.grid(row=15, column=0, pady=2,sticky=W)
+lrLb.grid(row=15, column=0, pady=8,sticky=W)
 
 destreeLb = Label(root, text="RandomForest", fg="white", bg="red")
 destreeLb.grid(row=17, column=0, pady=10, sticky=W)
