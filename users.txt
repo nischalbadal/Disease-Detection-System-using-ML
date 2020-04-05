@@ -1,0 +1,3 @@
+Name:  TEST  Symptoms: blister chest pain constipation depression dizziness PROGNOSIS: 1: GERD 2: Hypertension 3: Hypertension
+Name:  asdsf  Symptoms: weekness in limbs chest pain coma depression belly pain PROGNOSIS: 1: piles 2: Hypertension 3: fungal infection
+Name:  TEST  Symptoms: blister chest pain constipation depression dizziness PROGNOSIS: GERD Hypertension HypertensionName:  TEST  Symptoms: blister chest pain constipation depression dizziness PROGNOSIS: GERD Hypertension HypertensionName:  TEST  Symptoms: blister chest pain constipation depression dizziness PROGNOSIS: GERD Hypertension HypertensionName:  TEST  Symptoms: blister chest pain constipation depression dizziness PROGNOSIS: GERD Hypertension Hypertension

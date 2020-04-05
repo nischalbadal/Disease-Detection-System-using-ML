@@ -1,9 +1,9 @@
+import tkinter
 from tkinter import *
-
 import numpy as np
 import pandas as pd
 # from gui_stuff import *
-
+write1= ""
 l1=['back_pain','constipation','abdominal_pain','diarrhoea','mild_fever','yellow_urine',
 'yellowing_of_eyes','acute_liver_failure','fluid_overload','swelling_of_stomach',
 'swelled_lymph_nodes','malaise','blurred_and_distorted_vision','phlegm','throat_irritation',
@@ -94,7 +94,7 @@ def DecisionTree():
     psymptoms = [Symptom1.get(),Symptom2.get(),Symptom3.get(),Symptom4.get(),Symptom5.get()]
 
     for k in range(0,len(l1)):
-        print (k)
+        # print (k,)
         for z in psymptoms:
             if(z==l1[k]):
                 l2[k]=1
@@ -176,7 +176,7 @@ def NaiveBayes():
     inputtest = [l2]
     predict = gnb.predict(inputtest)
     predicted=predict[0]
-
+    write1=predicted;
     h='no'
     for a in range(0,len(disease)):
         if(predicted == a):
@@ -192,7 +192,7 @@ def NaiveBayes():
 
 # gui_stuff------------------------------------------------------------------------------------
 
-root = Tk("DISEASE PREDICTION ")
+root = Tk()
 root.configure(background='white')
 
 # entry variables
@@ -209,12 +209,19 @@ Symptom5.set(None)
 Name = StringVar()
 
 # Heading
-w2 = Label(root, justify=LEFT, text="eCheckUp - Disease Predicton System using Machine Learning", fg="red", bg="white")
+w2 = Label(root, justify=LEFT, text="eCheckUp - Disease Prediction System using Machine Learning", fg="red", bg="white")
 w2.config(font=("Elephant", 30))
 
 w2.grid(row=1, column=0, columnspan=2, padx=100)
 
 w2.grid(row=2, column=0, columnspan=2, padx=100)
+
+w3 = Label(root, justify=CENTER, text="  Please go through the available symptoms and various predictions based on your symptoms.  ")
+w3.config(font=("Elephant", 10))
+
+w3.grid(row=3, column=0, columnspan=2, padx=100)
+
+w3.grid(row=4, column=0, columnspan=2, padx=100)
 
 # labels
 NameLb = Label(root, text="Name of the Patient", fg="black", bg="white")
@@ -237,14 +244,17 @@ S5Lb = Label(root, text="Symptom 5", fg="black", bg="white")
 S5Lb.grid(row=11, column=0, pady=2, sticky=W)
 
 
-lrLb = Label(root, text="DecisionTree", fg="white", bg="red")
-lrLb.grid(row=15, column=0, pady=8,sticky=W)
+lrLb = Label(root, text="Prediction 1", fg="white", bg="red")
+lrLb.grid(row=15, column=0, pady=2,sticky=W)
 
-destreeLb = Label(root, text="RandomForest", fg="white", bg="red")
+destreeLb = Label(root, text="Prediction 2", fg="white", bg="red")
 destreeLb.grid(row=17, column=0, pady=10, sticky=W)
 
-ranfLb = Label(root, text="NaiveBayes", fg="white", bg="red")
-ranfLb.grid(row=19, column=0, pady=10, sticky=W)
+ranfoLb = Label(root, text="Final Prediction", fg="white", bg="red")
+ranfoLb.grid(row=19, column=0, pady=10, sticky=W)
+
+# ranfLb = Label(root, text="Final Prediction", fg="white", bg="red")
+# ranfLb.grid(row=25, column=0, pady=10, sticky=W)
 
 # entries
 OPTIONS = sorted(l1)
@@ -269,22 +279,35 @@ S5En.grid(row=11, column=1)
 
 
 dst = Button(root, text="DecisionTree", command=DecisionTree,bg="green",fg="yellow")
-dst.grid(row=8, column=3,padx=10)
+dst.grid(row=15, column=2,padx=10)
+
 
 rnf = Button(root, text="Randomforest", command=randomforest,bg="green",fg="yellow")
-rnf.grid(row=9, column=3,padx=10)
+rnf.grid(row=17, column=2,padx=10)
 
 lr = Button(root, text="NaiveBayes", command=NaiveBayes,bg="green",fg="yellow")
-lr.grid(row=10, column=3,padx=10)
+lr.grid(row=19, column=2,padx=10)
+
 
 #textfileds
 t1 = Text(root, height=1, width=40,bg="orange",fg="black")
 t1.grid(row=15, column=1, padx=10)
 
 t2 = Text(root, height=1, width=40,bg="orange",fg="black")
-t2.grid(row=17, column=1 , padx=10)
+t2.grid(row=17, column=1, padx=10)
 
 t3 = Text(root, height=1, width=40,bg="orange",fg="black")
-t3.grid(row=19, column=1 , padx=10)
+t3.grid(row=19, column=1, padx=10)
+
+user_Input= "Name:  TEST  Symptoms: blister chest pain constipation depression dizziness PROGNOSIS: GERD Hypertension Hypertension"
+def write_File (text_File):
+    file = open("users.txt", "a")
+    file.write(user_Input)
+    file.close()
+
+button_Write = tkinter.Button(root, text = "SAVE THE DETAILS", command = lambda: write_File(user_Input)).grid(row=25, column=1)
+
 
 root.mainloop()
+
+
